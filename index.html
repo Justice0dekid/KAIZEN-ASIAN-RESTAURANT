@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>KAIZEN Restaurant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos/dist/aos.css" />
+</head>
+<body>
+
+  <!-- Japanese Vertical Background -->
+  <div class="bg-japanese">改善</div>
+
+  <!-- Header -->
+  <header class="top-header">
+    <img src="images\logo.png" alt="KAIZEN Logo" class="logo" />
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" data-aos="fade-down">
+    <h1 class="main-title">KAIZEN</h1>
+    <div class="buttons">
+      <button class="btn btn-reserve" id="openReservation">Make a Reservation</button>
+      <a href="Menu Nov 2024 final edit.pdf" target="_blank" class="btn btn-menu">View Menu</a>
+    </div>
+  </section>
+
+  <!-- Reservation Form -->
+  <section class="reservation-form hidden" id="reservationForm">
+    <div class="form-logo">
+      <img src="images\logo.png" alt="Restaurant Logo" />
+    </div>
+
+    <div class="dress-code">
+      <div>
+        <h3>DRESS CODE FOR FEMALES</h3>
+        <ul>
+          <li>Elegant Dresses</li>
+          <li>Heels or Dress Sandals</li>
+          <li>No Casual Wear</li>
+        </ul>
+      </div>
+      <div>
+        <h3>DRESS CODE FOR MALES</h3>
+        <ul>
+          <li>Button-Down Shirt</li>
+          <li>Dress Pants & Shoes</li>
+          <li>No Shorts or Sneakers</li>
+        </ul>
+      </div>
+    </div>
+
+    <form id="reservationData">
+      <input type="text" name="Name" placeholder="Name" required />
+      <input type="date" name="Date" required />
+      <input type="time" name="Time" required />
+      <input type="number" name="Guests" placeholder="Number of Guests" required />
+      <input type="text" name="Purpose" placeholder="Purpose" required />
+      <input type="tel" name="Contact" placeholder="Contact" required />
+      <button type="submit" class="btn btn-reserve">SUBMIT</button>
+    </form>
+
+    <p class="reservation-note">
+      Reservation is free with 30 minutes of waiting time. Failure to show up at the designated time will require a fee.
+    </p>
+  </section>
+
+  <!-- Image Carousel -->
+  <section class="carousel-section" data-aos="fade-up">
+    <h2>Our Ambience</h2>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images\Dish1.jpg" alt="Dish1" /></div>
+        <div class="swiper-slide"><img src="images\Dish2.jpg" alt="Dish2" /></div>
+        <div class="swiper-slide"><img src="images\Dish3.jpg" alt="Dish3" /></div>
+        <div class="swiper-slide"><img src="images\Dish4.jpg" alt="Dish4" /></div>
+        <div class="swiper-slide"><img src="images\Dish5.jpg" alt="Dish5" /></div>
+        <div class="swiper-slide"><img src="images\Dish6.jpg" alt="Dish6" /></div>
+        <div class="swiper-slide"><img src="images\Dish7.jpg" alt="Dish7" /></div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="info" data-aos="fade-up">
+    <h2>About Us</h2>
+    <p>Welcome to Kaizen — where tradition meets the future. Experience modern Japanese dining with a touch of gold and excellence.</p>
+
+    <h3>Location</h3>
+    <p>Dr.Osei Tuffour Bypass,Kumasi</p>
+
+    <div class="map-container">
+      <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.8185514648026!2d-1.6278750279792207!3d6.669393006723617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb97cd0fe338dd%3A0x3c203ea558c229d!2sKaizen%20Asian%20Restaurant!5e0!3m2!1sen!2sgh!4v1750872041650!5m2!1sen!2sgh"
+      width="850" 
+      height="450" 
+      style="border:0;" 
+      allowfullscreen=""
+       loading="lazy" 
+></iframe>
+ </div>
+
+
+    <h3>Opening Hours</h3>
+    <p>Monday - Thursday: 4:00 PM - 10:00 PM</p>
+    <p>Friday - Sunday: 4:00 PM - 12:00 AM</p>
+
+    <h3>Contact & Social Media</h3>
+    <p>Email: <a href="mailto:contact@kaizen.com">contact@kaizen.com</a></p>
+    <p>Instagram: <a href="#">@kaizenrestaurant</a> | Facebook: <a href="#">/kaizenrestaurant</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>&copy; 2025 Kaizen Restaurant. Designed with care.</footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init({ duration: 1000 });
+
+      new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: { delay: 3000 },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+      });
+
+      // Show form
+      const openBtn = document.getElementById('openReservation');
+      const formSection = document.getElementById('reservationForm');
+      openBtn.addEventListener('click', () => {
+        formSection.classList.remove('hidden');
+        formSection.scrollIntoView({ behavior: "smooth" });
+      });
+
+      // Send form to WhatsApp
+      const form = document.getElementById('reservationData');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let userName = form.Name.value;
+        let userDate = form.Date.value;
+        let userTime = form.Time.value;
+        let userGuests = form.Guests.value;
+        let userPurpose = form.Purpose.value;
+        let userContact = form.Contact.value;
+        
+        let message = `Reservation Request:
+        Name: ${userName}
+        Date: ${userDate}
+        Time: ${userTime}
+        Guests: ${userGuests}
+        Purpose: ${userPurpose}
+        Contact: ${userContact}`;
+      
+        
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappURL = `http://wa.me/message/BSXNWPF5X7F5P1?text=${encodedMessage}`;
+        window.open(whatsappURL, '_blank');
+      });
+    });
+  </script>
+</body>
+</html>
